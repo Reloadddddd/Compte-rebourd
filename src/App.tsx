@@ -5,11 +5,13 @@ import ParticleBackground from './components/ParticleBackground';
 import './App.css';
 
 function App() {
-  // Set fixed target date 14 days from deployment
+  // Set fixed target date 14 days, 24 hours, and 59 seconds from deployment
   const getTargetDate = () => {
     const deployDate = new Date();
-    deployDate.setDate(deployDate.getDate() + 14);
-    deployDate.setHours(0, 0, 0, 0); // Reset to midnight
+    deployDate.setDate(deployDate.getDate() + 14); // Add 14 days
+    deployDate.setHours(24); // Set to next day (24 hours)
+    deployDate.setMinutes(0);
+    deployDate.setSeconds(59);
     return deployDate;
   };
 
