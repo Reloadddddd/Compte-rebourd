@@ -5,18 +5,12 @@ import ParticleBackground from './components/ParticleBackground';
 import './App.css';
 
 function App() {
-  // Get stored target date or set new one if not exists
+  // Set fixed target date 14 days from deployment
   const getTargetDate = () => {
-    const storedDate = localStorage.getItem('countdownTarget');
-    if (storedDate) {
-      return new Date(storedDate);
-    }
-    
-    const newTarget = new Date();
-    newTarget.setDate(newTarget.getDate() + 15);
-    newTarget.setHours(newTarget.getHours() + 24);
-    localStorage.setItem('countdownTarget', newTarget.toISOString());
-    return newTarget;
+    const deployDate = new Date();
+    deployDate.setDate(deployDate.getDate() + 14);
+    deployDate.setHours(0, 0, 0, 0); // Reset to midnight
+    return deployDate;
   };
 
   useEffect(() => {

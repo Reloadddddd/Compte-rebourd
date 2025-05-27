@@ -37,7 +37,6 @@ const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
       // Only redirect once when countdown reaches zero
       if (!hasRedirected) {
         setHasRedirected(true);
-        localStorage.removeItem('countdownTarget'); // Clear stored date
         window.location.href = 'https://reloadweb.netlify.app/';
       }
       
