@@ -5,19 +5,8 @@ import ParticleBackground from './components/ParticleBackground';
 import './App.css';
 
 function App() {
-  // Get stored target date or set new one if not exists
-  const getTargetDate = () => {
-    const storedDate = localStorage.getItem('countdownTarget');
-    if (storedDate) {
-      return new Date(storedDate);
-    }
-    
-    const newTarget = new Date();
-    newTarget.setDate(newTarget.getDate() + 15);
-    newTarget.setHours(newTarget.getHours() + 24);
-    localStorage.setItem('countdownTarget', newTarget.toISOString());
-    return newTarget;
-  };
+  // Set a fixed target date for everyone (March 15, 2024 at 12:00:00 UTC)
+  const targetDate = new Date('2024-03-15T12:00:00Z');
 
   useEffect(() => {
     // Add scroll animation for the arrow
@@ -62,7 +51,7 @@ function App() {
             </h1>
             <p className="tagline">Quelque chose d'incroyable arrive bientôt</p>
             
-            <CountdownTimer targetDate={getTargetDate()} />
+            <CountdownTimer targetDate={targetDate} />
             
             <div className="scroll-arrow">
               <ArrowDown size={32} />
